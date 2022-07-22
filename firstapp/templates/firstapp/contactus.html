@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name=”viewport” content=”width=device-width, initial-scale=1.0”><!--    this will do for a responsive page-->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>Contact us</title>
+</head>
+
+<body style="background-color:#ff0060; text-align:center; margin:auto auto auto auto;">
+
+
+      {% if user.is_authenticated %}
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'users:logout' %}">Logout</a>
+      </li>
+      <li class="nav-item">
+        <p>Welcome, {{user.username}}</p>
+      </li>
+
+      {% else %}
+
+      <li class="nav-item">
+        <a class="nav-link" href="/login">Login</a>
+      </li>
+
+      {% endif %}
+
+
+
+<h2 id="h2id" >Contact us</h2>
+
+
+                                {% if messages %}
+                            <ul>
+                                {% for message in messages %}
+                                    <p style="color:white;">{{ message }}</p>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+
+<!--    form with input tag -->
+<form method="post">
+    {% csrf_token %}
+
+
+    {{ contactform.as_p }}
+    <input type="submit" value="Submit">
+
+<!--    <input type="text" name="name" id="name" style="width: 500px;" placeholder="Name"><br><br>-->
+<!--    <input type="text" name="phone" id="phone" style="width: 500px;" placeholder="Phone"><br><br>-->
+<!--    <textarea class="textarea" name="message" style="width: 500px;height:200px" placeholder="Message"></textarea><br><br>-->
+<!--    <input type="submit" value="Submit">-->
+</form>
+<!-- end of form -->
+
+</body>
+</html>

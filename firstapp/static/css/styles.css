@@ -1,0 +1,12 @@
+#id_name, #id_phone {
+    width: 500px;
+}
+
+#id_message{
+    width: 500px;
+    height: 200px;
+}
+
+#h2id{
+  color: blue;
+}
